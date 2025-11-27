@@ -1,5 +1,5 @@
 import streamlit as st
-from travel_planner_chatbot import SERVERS, chatbot, retrieve_all_threads, submit_async_task, tools, mcp_tools
+from travel_planner_chatbot import chatbot, retrieve_all_threads, submit_async_task
 import queue
 from uuid import uuid4
 from langchain_core.messages import ToolMessage, HumanMessage, AIMessage

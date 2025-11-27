@@ -2,7 +2,7 @@ from langgraph.graph import StateGraph, START, END
 from langchain_openai import ChatOpenAI
 import asyncio, threading, aiosqlite, os, logging, requests, pytz
 from langgraph.graph.message import add_messages
-from langchain_core.messages import BaseMessage, ToolMessage
+from langchain_core.messages import BaseMessage
 from langchain_core.tools import tool, BaseTool
 from langchain_community.tools import DuckDuckGoSearchRun
 from langchain_mcp_adapters.client import MultiServerMCPClient
