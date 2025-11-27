@@ -1,0 +1,11 @@
+langchain-openai
+streamlit
+python-dotenv
+langchain
+fastmcp
+langchain-mcp-adapters
+geopy
+timezonefinder
+langgraph-checkpoint-sqlite
+aiosqlite
+langgraph

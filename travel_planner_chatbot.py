@@ -31,31 +31,33 @@ else:
 if not OPENAI_API_KEY:
     raise ValueError("OPENAI_API_KEY is not set")
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 SERVERS = {
     "hotel": {
         "transport": "stdio",
         "command": "python3",
-        "args": ["/Users/sayamkumar/Desktop/Data Science/Projects/Travel Planner Assistant/hotels_mcp.py"]
+        "args": [os.path.join(BASE_DIR, "hotels_mcp.py")]
     },
     "flight": {
         "transport": "stdio",
         "command": "python3",
-        "args": ["/Users/sayamkumar/Desktop/Data Science/Projects/Travel Planner Assistant/flights_mcp.py"]
+        "args": [os.path.join(BASE_DIR, "flights_mcp.py")]
     },
     "weather": {
         "transport": "stdio",
         "command": "python3",
-        "args": ["/Users/sayamkumar/Desktop/Data Science/Projects/Travel Planner Assistant/weather_mcp.py"]
+        "args": [os.path.join(BASE_DIR, "weather_mcp.py")]
     },
     "places": {
         "transport": "stdio",
         "command": "python3",
-        "args": ["/Users/sayamkumar/Desktop/Data Science/Projects/Travel Planner Assistant/places_mcp.py"]
+        "args": [os.path.join(BASE_DIR, "places_mcp.py")]
     },
-    "arithmetic": {
-            "transport": "stdio",
-            "command": "python3",
-            "args": ["/Users/sayamkumar/Desktop/Data Science/MCP/math-mcp-server/main.py"]
+    "math": {
+        "transport": "stdio",
+        "command": "python3",
+        "args": [os.path.join(BASE_DIR, "math_mcp.py")]
     }
 }
 
