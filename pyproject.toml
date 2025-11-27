@@ -17,7 +17,9 @@ dependencies = [
     "aiosqlite",
     "python-dotenv",
     "langchain-mcp-adapters",
-    "langchain-core"
+    "langchain-core",
+    "ddgs",
+    "watchdog"
 ]
 
 [tool.poetry]
