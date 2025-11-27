@@ -9,3 +9,7 @@ timezonefinder
 langgraph-checkpoint-sqlite
 aiosqlite
 langgraph
+langchain-community
+ddgs
+watchdog
+langchain-core
