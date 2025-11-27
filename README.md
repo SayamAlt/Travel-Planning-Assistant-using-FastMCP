@@ -1,76 +1,137 @@
-\section*{\emoji{1f9f3} Travel Planning Assistant using LangGraph + MCP}
+# 🧳 Travel Planning Assistant using LangGraph + MCP
 
-Successfully developed an intelligent \textbf{Travel Planner Assistant} powered by \textbf{LangGraph}, \textbf{FastMCP}, and \textbf{Modular MCP Servers}, providing real-time trip planning with flights, hotels, weather, places, and timezone information—all orchestrated through an LLM agent and delivered via a clean Streamlit UI.
+Successfully developed an intelligent **Travel Planner Assistant** powered by **LangGraph**, **FastMCP**, and **Modular MCP Servers**, providing real-time trip planning with flights, hotels, weather, places, and timezone information—all orchestrated through an LLM agent and delivered via a clean Streamlit UI.
 
-\noindent\rule{\linewidth}{0.4pt}
+---
 
-\section*{\emoji{1f680} Overview}
+## 🚀 Overview
 
 This project implements a fully modular, agent-driven travel planning system capable of:
 
-\begin{itemize}
-    \item Retrieving live flight options using the Amadeus API
-    \item Searching hotel availability \& pricing
-    \item Fetching real-time weather for any city
-    \item Recommending nearby attractions and points of interest
-    \item Detecting timezones and local times
-    \item Coordinating results through a LangGraph-powered LLM workflow
-\end{itemize}
+- Retrieving **live flight options** using the Amadeus API  
+- Searching **hotel availability & pricing**  
+- Fetching **real-time weather** for any city  
+- Recommending **nearby attractions and points of interest**  
+- Detecting **timezones and local times**  
+- Coordinating results through a **LangGraph-powered LLM workflow**
 
-The system uses \textbf{MCP (Model Context Protocol)} servers for each data source—allowing plug-and-play scalability, clean separation of services, and fault-tolerant tool execution.
+The system uses **MCP (Model Context Protocol)** servers for each data source—allowing plug-and-play scalability, clean separation of services, and fault-tolerant tool execution.
 
-\noindent\rule{\linewidth}{0.4pt}
+---
 
-\section*{\emoji{1f9e9} Key Components}
+## 🧩 Key Components
 
-\subsection*{1. LangGraph Workflow}
-\begin{itemize}
-    \item Core agent loop implemented with LangGraph
-    \item Integrated routing via \texttt{ToolNode} and \texttt{tools\_condition}
-    \item Persistent thread state using SQLite checkpoints
-    \item Handles user queries, tool execution, and final answer synthesis
-\end{itemize}
+### **1. LangGraph Workflow**
+- Core agent loop implemented with LangGraph  
+- Integrated routing via `ToolNode` and `tools_condition`  
+- Persistent thread state using SQLite checkpoints  
+- Handles user queries, tool execution, and final answer synthesis  
 
-\subsection*{2. MCP Servers (FastMCP-based)}
+### **2. MCP Servers (FastMCP-based)**
+
 Each microservice runs as an independent MCP server:
-\begin{itemize}
-    \item \texttt{flights\_mcp.py} → Live flights via Amadeus API
-    \item \texttt{hotels\_mcp.py} → Hotel search \& filtering
-    \item \texttt{weather\_mcp.py} → Current weather + forecast
-    \item \texttt{places\_mcp.py} → Attractions \& POIs
-    \item \texttt{math\_mcp.py} → Utility math operations
-    \item Fully typed tool definitions with FastMCP decorators
-\end{itemize}
 
-\subsection*{3. Streamlit Interface}
-\begin{itemize}
-    \item Chat-style conversation interface
-    \item Threads persisted and reloadable
-    \item Supports user messages, agent messages, and tool results
-    \item Real-time server logs shown inside Streamlit
-\end{itemize}
+- `flights_mcp.py` → Live flights via Amadeus API  
+- `hotels_mcp.py` → Hotel search & filtering  
+- `weather_mcp.py` → Current weather + forecast  
+- `places_mcp.py` → Attractions & POIs  
+- `math_mcp.py` → Utility math operations  
+- Fully typed tool definitions with FastMCP decorators  
 
-\noindent\rule{\linewidth}{0.4pt}
+### **3. Streamlit Interface**
+- Chat-style conversation interface  
+- Threads persisted and reloadable  
+- Supports user messages, agent messages, and tool results  
+- Real-time server logs shown inside Streamlit  
 
-\section*{\emoji{1f50d} Features}
-\begin{itemize}
-    \item End-to-end travel planning from a single prompt
-    \item Real-time data retrieval (flights, hotels, weather, timezone)
-    \item LLM-based reasoning with multiple MCP tools
-    \item Robust agent orchestration using LangGraph
-    \item Stateless UI, stateful backend with saved chat threads
-    \item Easily extendable (add new MCP tools in minutes)
-\end{itemize}
+---
 
-\noindent\rule{\linewidth}{0.4pt}
+## 🔍 Features
 
-\section*{\emoji{1f6e0} Tech Stack}
-\begin{itemize}
-    \item LangGraph – LLM agent workflow engine
-    \item FastMCP + MCP – Modular tool servers
-    \item LangChain – Message and tool abstractions
-    \item Streamlit – Frontend UI
-    \item Amadeus SDK – Flight data retrieval
-    \item Geopy \& TimezoneFinder – Geo and timezone utilities
-    \item Python 3.10+
-\end{itemize}
+- End-to-end travel planning from a single prompt  
+- Real-time data retrieval (flights, hotels, weather, timezone)  
+- LLM-based reasoning with multiple MCP tools  
+- Robust agent orchestration using LangGraph  
+- Stateless UI, stateful backend with saved chat threads  
+- Easily extendable (add new MCP tools in minutes)
+
+---
+
+## 🛠️ Tech Stack
+
+- **LangGraph** – LLM agent workflow engine  
+- **FastMCP + MCP** – Modular tool servers  
+- **LangChain** – Message and tool abstractions  
+- **Streamlit** – Frontend UI  
+- **Amadeus SDK** – Flight data retrieval  
+- **Geopy & TimezoneFinder** – Geo and timezone utilities  
+- **Python 3.10+**
+
+---
+
+## 📂 Project Structure
+
+```bash
+├── app.py                      # Streamlit frontend
+├── travel_planner_chatbot.py   # LangGraph agent & workflow
+├── flights_mcp.py              # Live flight search MCP server
+├── hotels_mcp.py               # Hotel search MCP server
+├── weather_mcp.py              # Weather MCP server
+├── places_mcp.py               # Places & attractions MCP server
+├── math_mcp.py                 # Utility MCP server
+├── requirements.txt            # Dependencies
+└── README.md
+```
+
+---
+
+## 🧠 How It Works
+	1.	User sends a travel-related query through Streamlit.
+	2.	LangGraph agent receives the message and evaluates needed tools.
+	3.	Tools are executed via MCP servers running in separate processes.
+	4.	Agent collects tool results, reasons over them, and generates a plan.
+	5.	Final structured response is sent back to the UI.
+
+---
+
+### 📦 Installation & Setup
+
+Clone repo:
+
+```bash
+git clone https://github.com/your-username/travel-planning-assistant-using-fastmcp
+cd travel-planning-assistant-using-fastmcp
+```
+
+Install requirements:
+
+```bash
+pip install -r requirements.txt
+```
+
+Start MCP servers:
+
+```bash
+python flights_mcp.py
+python hotels_mcp.py
+python weather_mcp.py
+python places_mcp.py
+python math_mcp.py
+```
+
+Run Streamlit app
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## 🤝 Contributions
+
+Pull requests are welcome!
+You can add more MCP tools (car rentals, restaurants, currency converters, maps, etc.) to extend functionality.
+
+## 📜 License
+
+MIT License.
